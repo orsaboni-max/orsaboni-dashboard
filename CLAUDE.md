@@ -42,8 +42,11 @@ app/
 │   └── posts/route.ts
 components/
 ├── Sidebar.tsx
+├── CompetitorCard.tsx  # Competitor profile card with avatar, stats, hover
+├── PostEmbed.tsx       # Instagram embed + stats + "צור תוכן מזה" CTA
 lib/
 ├── supabase.ts
+├── windsor.ts          # Hardcoded competitor & post data (12 competitors, 20 posts)
 ```
 
 ## Commands
