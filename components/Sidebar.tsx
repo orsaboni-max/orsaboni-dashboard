@@ -71,6 +71,7 @@ export function Sidebar() {
         <span className="font-display text-xl font-bold tracking-tight text-foreground">
           @orsaboni
         </span>
+        <span className="text-xs text-gray-400 mt-0.5 block">Brand Intelligence</span>
       </div>
 
       <nav className="flex flex-col gap-1 p-2 flex-1">
