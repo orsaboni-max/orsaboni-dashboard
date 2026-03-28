@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Heebo, Playfair_Display, DM_Sans } from "next/font/google";
+import Script from "next/script";
 import { Sidebar } from "@/components/Sidebar";
 import "./globals.css";
 
@@ -37,6 +38,10 @@ export default function RootLayout({
       <body className="min-h-full flex">
         <Sidebar />
         <main className="flex-1 min-h-screen">{children}</main>
+        <Script
+          src="https://www.instagram.com/embed.js"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );

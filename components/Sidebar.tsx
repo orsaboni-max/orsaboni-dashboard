@@ -68,10 +68,12 @@ export function Sidebar() {
   return (
     <aside className="w-[200px] min-h-screen sticky top-0 bg-surface border-l border-border flex flex-col">
       <div className="px-5 pt-6 pb-5 border-b border-border">
-        <span className="font-display text-xl font-bold tracking-tight text-foreground">
+        <span className="font-display text-lg font-bold tracking-tight text-foreground">
           @orsaboni
         </span>
-        <span className="text-xs text-gray-400 mt-0.5 block">Brand Intelligence</span>
+        <span className="text-[9px] text-gray-400 mt-1 block uppercase tracking-[2px]">
+          Brand Intelligence
+        </span>
       </div>
 
       <nav className="flex flex-col gap-1 p-2 flex-1">
@@ -84,7 +86,7 @@ export function Sidebar() {
               href={item.href}
               className={`flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm no-underline transition-colors ${
                 isActive
-                  ? "bg-accent text-white font-semibold"
+                  ? "bg-[#FFF5F0] text-accent font-semibold"
                   : "text-gray-600 hover:bg-[#F5F5F0] font-normal"
               }`}
             >

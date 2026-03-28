@@ -22,7 +22,6 @@ export default function FeedPage() {
       posts = posts.filter((p) => p.type === typeFilter);
     }
 
-    // Sort newest first
     posts.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
 
     return posts;
@@ -42,18 +41,18 @@ export default function FeedPage() {
       {/* Header */}
       <div className="mb-6">
         <h1 className="text-2xl font-bold font-display text-foreground">פיד מתחרים</h1>
-        <p className="text-sm text-gray-500 mt-1">
+        <p className="text-[13px] text-gray-500 font-sans mt-1">
           {filteredPosts.length} פוסטים
           {selectedCompetitor ? ` מ-@${selectedCompetitor.username}` : " מכל המתחרים"}
         </p>
       </div>
 
-      {/* Competitor cards — horizontal scroll */}
-      <div className="mb-6 -mx-6 px-6">
-        <div className="flex gap-3 overflow-x-auto pb-3 scrollbar-thin">
+      {/* Competitor cards — grid */}
+      <div className="mb-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-3">
           <button
             onClick={() => setSelectedUsername(null)}
-            className={`flex-shrink-0 flex items-center justify-center px-5 py-3 rounded-xl text-sm font-semibold transition-all min-w-[80px] cursor-pointer
+            className={`flex items-center justify-center px-4 py-3 rounded-xl text-sm font-semibold transition-all cursor-pointer max-w-[140px] w-full
               ${!selectedUsername
                 ? "bg-accent text-white shadow-[0_2px_12px_rgba(240,115,74,0.3)]"
                 : "bg-surface text-gray-600 border border-border hover:bg-[#F5F5F0]"
@@ -77,22 +76,27 @@ export default function FeedPage() {
         </div>
       </div>
 
-      {/* Type filter */}
-      <div className="flex items-center gap-2 mb-6">
-        {typeOptions.map((opt) => (
-          <button
-            key={opt.value}
-            onClick={() => setTypeFilter(opt.value)}
-            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors cursor-pointer
-              ${typeFilter === opt.value
-                ? "bg-foreground text-white"
-                : "bg-surface text-gray-600 border border-border hover:bg-[#F5F5F0]"
-              }
-            `}
-          >
-            {opt.label}
-          </button>
-        ))}
+      {/* Section divider + type filter */}
+      <div className="mb-6 border-b border-border pb-4">
+        <h2 className="text-lg font-display font-bold text-foreground mb-3">
+          📱 הפוסטים האחרונים
+        </h2>
+        <div className="flex items-center gap-2">
+          {typeOptions.map((opt) => (
+            <button
+              key={opt.value}
+              onClick={() => setTypeFilter(opt.value)}
+              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors cursor-pointer
+                ${typeFilter === opt.value
+                  ? "bg-foreground text-white"
+                  : "bg-surface text-gray-600 border border-border hover:bg-[#F5F5F0]"
+                }
+              `}
+            >
+              {opt.label}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Posts grid */}
@@ -102,7 +106,7 @@ export default function FeedPage() {
           <p className="text-sm mt-1">נסה לשנות את הפילטר</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           {filteredPosts.map((post) => (
             <PostEmbed key={post.id} post={post} />
           ))}
